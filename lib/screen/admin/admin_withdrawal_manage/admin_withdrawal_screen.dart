@@ -73,12 +73,12 @@ class _AdminWithdrawalScreenState extends State<AdminWithdrawalScreen>
                     );
                   });
             },
-            child: Container(
-              margin: const EdgeInsets.all(10),
-              child: const Icon(
-                FontAwesomeIcons.calendar,
-              ),
-            ),
+            // child: Container(
+            //   margin: const EdgeInsets.all(10),
+            //   child: const Icon(
+            //     FontAwesomeIcons.calendar,
+            //   ),
+            // ),
           ),
         ],
       ),
@@ -296,8 +296,8 @@ class _AdminWithdrawalScreenState extends State<AdminWithdrawalScreen>
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     const Text('Ngày yêu cầu :'),
-                    Text(
-                        DateFormat('dd-MM-yyyy').format(requestWithdrawals.createdAt!)),
+                    Text(DateFormat('dd-MM-yyyy')
+                        .format(requestWithdrawals.createdAt!)),
                   ],
                 ),
               ),
@@ -308,8 +308,8 @@ class _AdminWithdrawalScreenState extends State<AdminWithdrawalScreen>
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       const Text('Ngày xác nhận :'),
-                      Text(
-                          DateFormat('dd-MM-yyyy').format(requestWithdrawals.dateWithdrawalApproved!)),
+                      Text(DateFormat('dd-MM-yyyy')
+                          .format(requestWithdrawals.dateWithdrawalApproved!)),
                     ],
                   ),
                 ),

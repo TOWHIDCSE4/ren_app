@@ -82,12 +82,12 @@ class _BillAdminScreenState extends State<BillAdminScreen>
                     );
                   });
             },
-            child: Container(
-              margin: const EdgeInsets.all(10),
-              child: const Icon(
-                FontAwesomeIcons.calendar,
-              ),
-            ),
+            // child: Container(
+            //   margin: const EdgeInsets.all(10),
+            //   child: const Icon(
+            //     FontAwesomeIcons.calendar,
+            //   ),
+            // ),
           ),
           IconButton(
               onPressed: () {
@@ -270,24 +270,24 @@ class _BillAdminScreenState extends State<BillAdminScreen>
             const SizedBox(
               height: 8,
             ),
-            if(bill.motel?.towerId != null)
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  children: [
-                    const Icon(CupertinoIcons.building_2_fill),
-                    const SizedBox(
-                      width: 4,
-                    ),
-                    Expanded(child: Text('${bill.motel?.towerName}')),
-                  ],
-                ),
-                const SizedBox(
-                  height: 8,
-                ),
-              ],
-            ),
+            if (bill.motel?.towerId != null)
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      const Icon(CupertinoIcons.building_2_fill),
+                      const SizedBox(
+                        width: 4,
+                      ),
+                      Expanded(child: Text('${bill.motel?.towerName}')),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 8,
+                  ),
+                ],
+              ),
             Row(
               children: [
                 const Icon(CupertinoIcons.home),

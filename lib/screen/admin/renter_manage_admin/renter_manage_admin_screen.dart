@@ -478,8 +478,10 @@ class _RenterManageAdminScreenState extends State<RenterManageAdminScreen>
         InkWell(
           onTap: () {
             Get.to(() => RenterDetailScreen(
-                  renterId: renter.id ?? 0,
-                ))!.then((value) => renterManageAdminController.getAllAdminRenter(isRefresh: true));
+                      renterId: renter.id ?? 0,
+                    ))!
+                .then((value) => renterManageAdminController.getAllAdminRenter(
+                    isRefresh: true));
           },
           child: Container(
             margin: const EdgeInsets.all(10),
@@ -530,17 +532,20 @@ class _RenterManageAdminScreenState extends State<RenterManageAdminScreen>
                       renter.phoneNumber ?? 'Chưa có thông tin',
                       style: const TextStyle(),
                     ),
-                    Text("Só/tên phòng: ${renter.hasContract == true ? (renter.contractActive?.motelRoom?.motelName ?? '') : renter.motelName ?? ''}"),
-                    Text('Tên toà nhà: ${renter.hasContract == true ? (renter.contractActive?.tower?.towerName ?? '') : renter.nameTowerExpected ?? ''}'),
-                    if(renter.hasContract == false)
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text("Ngày thuê dự kiến: ${DateFormat("dd-MM-yyyy").format(renter.estimateRentalDate ?? DateTime.now())}"),
-                        Text("Thời hạn thuê dự kiến: ${renter.estimateRentalPeriod ?? ''} tháng"),
-                      ],
-                    ),
-                    
+                    Text(
+                        "Só/tên phòng: ${renter.hasContract == true ? (renter.contractActive?.motelRoom?.motelName ?? '') : renter.motelName ?? ''}"),
+                    Text(
+                        'Tên toà nhà: ${renter.hasContract == true ? (renter.contractActive?.tower?.towerName ?? '') : renter.nameTowerExpected ?? ''}'),
+                    if (renter.hasContract == false)
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                              "Ngày thuê dự kiến: ${DateFormat("dd-MM-yyyy").format(renter.estimateRentalDate ?? DateTime.now())}"),
+                          Text(
+                              "Thời hạn thuê dự kiến: ${renter.estimateRentalPeriod ?? ''} tháng"),
+                        ],
+                      ),
                     const SizedBox(
                       height: 20,
                     ),
@@ -552,11 +557,18 @@ class _RenterManageAdminScreenState extends State<RenterManageAdminScreen>
                           if (renter.hasContract == false)
                             InkWell(
                               onTap: () {
-                                Get.to(()=>AddContractScreen(
-                                  renterInput: renter,
-                                  motelRoomInput:renter.motelId == null ? null : renter.motelRoom,
-                                  tower:renter.towerId == null ? null : Tower(id: renter.towerId,towerName: renter.nameTowerExpected),
-                                ));
+                                Get.to(() => AddContractScreen(
+                                      renterInput: renter,
+                                      motelRoomInput: renter.motelId == null
+                                          ? null
+                                          : renter.motelRoom,
+                                      tower: renter.towerId == null
+                                          ? null
+                                          : Tower(
+                                              id: renter.towerId,
+                                              towerName:
+                                                  renter.nameTowerExpected),
+                                    ));
                               },
                               child: Container(
                                 padding: const EdgeInsets.all(6),
@@ -581,7 +593,7 @@ class _RenterManageAdminScreenState extends State<RenterManageAdminScreen>
                           if (renter.hasContract == true)
                             InkWell(
                               onTap: () {
-                                Get.to(()=>AddBillScreen());
+                                Get.to(() => AddBillScreen());
                               },
                               child: Container(
                                 padding: const EdgeInsets.all(6),
@@ -770,9 +782,12 @@ class _RenterManageAdminScreenState extends State<RenterManageAdminScreen>
                                                 InkWell(
                                                   onTap: () {
                                                     Get.back();
-                                                    Get.to(()=>AddContractScreen(
-                                                      contractId: renter.contractActive?.id!,
-                                                    ));
+                                                    Get.to(
+                                                        () => AddContractScreen(
+                                                              contractId: renter
+                                                                  .contractActive
+                                                                  ?.id!,
+                                                            ));
                                                   },
                                                   child: Container(
                                                     padding:

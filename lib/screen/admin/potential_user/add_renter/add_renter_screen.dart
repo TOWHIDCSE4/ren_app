@@ -16,7 +16,7 @@ import 'add_renter_controller.dart';
 
 class AddRenterPotentialScreen extends StatelessWidget {
   AddRenterPotentialScreen(
-      {super.key, this.userPotential, this.isFromDetailScreen,this.onSubmit}) {
+      {super.key, this.userPotential, this.isFromDetailScreen, this.onSubmit}) {
     controller = AddRenterController(
         userPotential: userPotential, isFromDetailScreen: isFromDetailScreen);
   }
@@ -37,7 +37,7 @@ class AddRenterPotentialScreen extends StatelessWidget {
           title: const Text('Thêm người thuê'),
         ),
         body: SingleChildScrollView(
-          keyboardDismissBehavior:ScrollViewKeyboardDismissBehavior.onDrag,
+          keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
           child: Column(
             children: [
               const SizedBox(
@@ -127,8 +127,7 @@ class AddRenterPotentialScreen extends StatelessWidget {
                     Get.to(() => ChooseTowerScreen(
                           towerChoose: controller.towerSelected,
                           onChoose: (Tower tower) {
-                            controller.nameTower.text =
-                                tower.towerName ?? "";
+                            controller.nameTower.text = tower.towerName ?? "";
                             controller.towerSelected = tower;
                             controller.renterReq.value.nameTowerExpected =
                                 tower.towerName;
@@ -169,7 +168,7 @@ class AddRenterPotentialScreen extends StatelessWidget {
                               controller.motelRoomSelected = v[0];
                               controller.renterReq.value.motelName =
                                   v[0].motelName;
-                                  controller.renterReq.value.motelId = v[0].id;
+                              controller.renterReq.value.motelId = v[0].id;
                             }
                           },
                         ));
@@ -190,8 +189,8 @@ class AddRenterPotentialScreen extends StatelessWidget {
                   inputFormatters: [ThousandsFormatter()],
                   controller: controller.priceExpected,
                   onChanged: (v) {
-                    controller.renterReq.value.priceExpected = double.tryParse(SahaStringUtils()
-                                  .convertFormatText(v!));
+                    controller.renterReq.value.priceExpected = double.tryParse(
+                        SahaStringUtils().convertFormatText(v!));
                   },
                 ),
                 labelText: "Tiền phòng dự kiến",
@@ -291,13 +290,12 @@ class AddRenterPotentialScreen extends StatelessWidget {
               children: [
                 InkWell(
                   onTap: () {
-                    if(onSubmit !=null){
+                    if (onSubmit != null) {
                       onSubmit!(controller.renterReq.value);
                       Get.back();
-                    }else{
+                    } else {
                       controller.addRenter();
                     }
-                    
                   },
                   child: Container(
                     padding: const EdgeInsets.all(8),

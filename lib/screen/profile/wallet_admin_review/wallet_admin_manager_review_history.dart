@@ -1,13 +1,31 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:get/get.dart';
 import 'package:gohomy/screen/profile/wallet_admin_review/wallet_admin_review.dart';
+import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 
-class WalletAdminManagerReviewHistory extends StatelessWidget {
-   WalletAdminManagerReviewHistory({super.key});
+class WalletAdminManagerReviewHistory extends StatefulWidget {
+  WalletAdminManagerReviewHistory({super.key});
 
+  @override
+  State<WalletAdminManagerReviewHistory> createState() =>
+      _WalletAdminManagerReviewHistoryState();
+}
+
+class _WalletAdminManagerReviewHistoryState
+    extends State<WalletAdminManagerReviewHistory> {
   final Map<String, Widget> _viewMap = {
     'NẠP': const WalletDepositHistory(),
     'RÚT': const WalletWithdrawHistory(),
   };
+
+  bool _isSearching = false;
+
+  void _toggleSearch() {
+    setState(() {
+      _isSearching = !_isSearching;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -77,18 +95,82 @@ class WalletAdminManagerReviewHistory extends StatelessWidget {
       length: _viewMap.length,
       child: Scaffold(
         appBar: AppBar(
-          centerTitle: true,
-          title: const Text('Quản lý ví Renren'),
-          actions: [
-            IconButton(
-              onPressed: () {},
-              icon: const Icon(Icons.calendar_today_outlined),
+          flexibleSpace: Container(
+            decoration: const BoxDecoration(
+              gradient: LinearGradient(
+                colors: <Color>[Colors.deepOrange, Colors.orange],
+              ),
             ),
-            IconButton(
-              onPressed: () {},
-              icon: const Icon(Icons.search),
-            ),
-          ],
+          ),
+          title: Row(
+            children: [
+              Expanded(
+                child: _isSearching
+                    ? Container(
+                        width: double.infinity,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: Colors.white,
+                        ),
+                        child: Container(
+                          padding: const EdgeInsets.only(left: 10),
+                          height: 40,
+                          decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(5)),
+                          child: TextFormField(
+                            onFieldSubmitted: (value) {},
+                            //controller: chatListController.searchEdit,
+                            decoration: InputDecoration(
+                              isDense: true,
+                              contentPadding:
+                                  const EdgeInsets.only(top: 20, bottom: 5),
+                              border: InputBorder.none,
+                              hintText: "Tìm kiếm",
+                            ),
+                            minLines: 1,
+                            maxLines: 1,
+                          ),
+                        ),
+                      )
+                    : const Text('Khách hàng tiềm năng'),
+              ),
+              if (!_isSearching)
+                GestureDetector(
+                  onTap: () {
+                    showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return AlertDialog(
+                            content: SizedBox(
+                              width: Get.width * 0.9,
+                              height: Get.height * 0.5,
+                              child: SfDateRangePicker(
+                                onCancel: () {
+                                  Get.back();
+                                },
+                                showActionButtons: true,
+                                selectionMode:
+                                    DateRangePickerSelectionMode.range,
+                                maxDate: DateTime.now(),
+                              ),
+                            ),
+                          );
+                        });
+                  },
+                  child: Container(
+                    margin: const EdgeInsets.all(10),
+                    child: const Icon(
+                      FontAwesomeIcons.calendar,
+                    ),
+                  ),
+                ),
+              GestureDetector(
+                onTap: _toggleSearch,
+                child: const Icon(Icons.search),
+              ),
+            ],
+          ),
           bottom: PreferredSize(
             preferredSize: tabBar.preferredSize * 4.75,
             child: Column(

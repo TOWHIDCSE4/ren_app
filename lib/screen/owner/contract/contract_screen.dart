@@ -179,9 +179,8 @@ class _ContractScreenState extends State<ContractScreen>
             SahaTextFieldSearch(
               hintText: "Tên, sđt người đại diện",
               onChanged: (v) {
-                EasyDebounce.debounce(
-                    'debounce_search_contract', const Duration(milliseconds: 300),
-                    () {
+                EasyDebounce.debounce('debounce_search_contract',
+                    const Duration(milliseconds: 300), () {
                   contractController.textSearch = v;
                   contractController.getAllContract(isRefresh: true);
                 });
@@ -353,10 +352,10 @@ class _ContractScreenState extends State<ContractScreen>
                 const Divider(),
                 if (contract.motelRoom?.towerId != null)
                   Container(
-                     margin: const EdgeInsets.only(
-                    top: 5,
-                    bottom: 5,
-                  ),
+                    margin: const EdgeInsets.only(
+                      top: 5,
+                      bottom: 5,
+                    ),
                     child: Column(
                       children: [
                         Row(
@@ -378,10 +377,8 @@ class _ContractScreenState extends State<ContractScreen>
                                 ),
                               ),
                             ),
-                          
                           ],
                         ),
-                      
                       ],
                     ),
                   ),

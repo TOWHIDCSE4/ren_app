@@ -378,10 +378,10 @@ class _ContractAdminScreenState extends State<ContractAdminScreen>
                 const Divider(),
                 if (contract.motelRoom?.towerId != null)
                   Container(
-                     margin: const EdgeInsets.only(
-                    top: 5,
-                    bottom: 5,
-                  ),
+                    margin: const EdgeInsets.only(
+                      top: 5,
+                      bottom: 5,
+                    ),
                     child: Column(
                       children: [
                         Row(
@@ -403,10 +403,8 @@ class _ContractAdminScreenState extends State<ContractAdminScreen>
                                 ),
                               ),
                             ),
-                          
                           ],
                         ),
-                      
                       ],
                     ),
                   ),
