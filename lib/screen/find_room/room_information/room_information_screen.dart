@@ -763,7 +763,7 @@ class _RoomInformationScreenState extends State<RoomInformationScreen> {
                               Get.to(() => PersonalInformationScreen(
                                     phoneNumber: roomInformationController
                                         .roomPost.value.user!.phoneNumber,
-                                        isFromPost: true,
+                                    isFromPost: true,
                                     user: roomInformationController
                                             .roomPost.value.user ??
                                         User(),
@@ -1807,7 +1807,6 @@ class _RoomInformationScreenState extends State<RoomInformationScreen> {
                                                                 .listSimilarPost[
                                                             index],
                                                     isInPost: true,
-                                                   
                                                   );
                                                 }),
                                           ),
@@ -1832,11 +1831,10 @@ class _RoomInformationScreenState extends State<RoomInformationScreen> {
                     children: [
                       InkWell(
                         onTap: () {
-                          
                           Get.to(() => ChatListLockScreen(
                                 toUser: roomInformationController
                                     .roomPost.value.user,
-                                 isBackAll: true,   
+                                isBackAll: true,
                                 motelPost:
                                     roomInformationController.roomPost.value,
                               ));
@@ -2157,7 +2155,7 @@ class _RoomInformationScreenState extends State<RoomInformationScreen> {
               QrImageView(
                 data: link,
                 version: QrVersions.auto,
-                size: Get.width/1.5,
+                size: Get.width / 1.5,
               ),
             ],
           ),
