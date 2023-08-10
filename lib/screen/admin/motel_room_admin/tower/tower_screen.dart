@@ -150,20 +150,22 @@ class _TowerScreenState extends State<TowerScreen> {
             ),
             child: Row(
               children: [
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(12),
-                  child: Image.network(
-                    ((tower.images ?? []).isNotEmpty ? tower.images![0] : "") +
-                        "?reduce_file=true",
-                    height: 100,
-                    width: 100,
-                    fit: BoxFit.cover,
-                    errorBuilder: (context, error, stackTrace) {
-                      return const SahaEmptyImage(
-                        height: 100,
-                        width: 100,
-                      );
-                    },
+                Padding(
+                  padding: const EdgeInsets.only(left: 10),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(12),
+                    child: Image.network(
+                      "${(tower.images ?? []).isNotEmpty ? tower.images![0] : ""}?reduce_file=true",
+                      height: 100,
+                      width: 100,
+                      fit: BoxFit.cover,
+                      errorBuilder: (context, error, stackTrace) {
+                        return const SahaEmptyImage(
+                          height: 100,
+                          width: 100,
+                        );
+                      },
+                    ),
                   ),
                 ),
                 const SizedBox(
@@ -280,20 +282,6 @@ class _TowerScreenState extends State<TowerScreen> {
               right: 5,
               child: Row(
                 children: [
-                  // IconButton(
-                  //   color: Theme.of(Get.context!).primaryColor,
-                  //   onPressed: () {
-                  //     Get.to(() => AddTowerScreen(
-                  //               towerId: tower.id,
-                  //             ))!
-                  //         .then((value) =>
-                  //             controller.getAllTower(isRefresh: true));
-                  //   },
-                  //   icon: const Icon(Icons.edit),
-                  // ),
-                  // const SizedBox(
-                  //   width: 4,
-                  // ),
                   IconButton(
                     color: Theme.of(Get.context!).primaryColor,
                     onPressed: () {
