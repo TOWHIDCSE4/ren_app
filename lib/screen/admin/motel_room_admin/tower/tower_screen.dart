@@ -179,7 +179,9 @@ class _TowerScreenState extends State<TowerScreen> {
                             color: Theme.of(Get.context!).primaryColor,
                             fontSize: 18),
                       ),
-                      
+                      const SizedBox(
+                        height: 15,
+                      ),
                       Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [

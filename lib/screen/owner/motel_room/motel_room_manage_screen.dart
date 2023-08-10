@@ -18,7 +18,7 @@ class MotelRoomManageScreen extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           item(
-            assetImage: "assets/images/tower.png",
+              assetImage: "assets/images/tower.png",
               title: 'TOÀ NHÀ',
               onTap: () {
                 Get.to(() => TowerScreen(
@@ -26,7 +26,7 @@ class MotelRoomManageScreen extends StatelessWidget {
                     ));
               }),
           item(
-            assetImage: "assets/images/room.png",
+              assetImage: "assets/images/room.png",
               title: "PHÒNG ĐƠN",
               onTap: () {
                 Get.to(() => ListMotelRoomScreen(

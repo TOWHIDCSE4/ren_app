@@ -261,23 +261,6 @@ class _ListMotelRoomScreenState extends State<ListMotelRoomScreen>
           padding: const EdgeInsets.all(10),
           child: Column(children: [
             Row(
-              mainAxisAlignment:
-                  MainAxisAlignment.end, // Place the button at the top right
-              children: [
-                IconButton(
-                  icon: Icon(
-                    isEyeOpen ? Icons.visibility : Icons.visibility_off,
-                    color: isEyeOpen ? Colors.orange : Colors.grey,
-                  ),
-                  onPressed: () {
-                    setState(() {
-                      visibilityMap[index] = !isEyeOpen; // Toggle visibility
-                    });
-                  },
-                ),
-              ],
-            ),
-            Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Stack(
@@ -311,7 +294,26 @@ class _ListMotelRoomScreenState extends State<ListMotelRoomScreen>
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      Text('Phòng: ${item.motelName ?? ''}'),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text('Phòng: ${item.motelName ?? ''}'),
+                          IconButton(
+                            icon: Icon(
+                              isEyeOpen
+                                  ? Icons.visibility
+                                  : Icons.visibility_off,
+                              color: isEyeOpen ? Colors.orange : Colors.grey,
+                            ),
+                            onPressed: () {
+                              setState(() {
+                                visibilityMap[index] =
+                                    !isEyeOpen; // Toggle visibility
+                              });
+                            },
+                          ),
+                        ],
+                      ),
                       const SizedBox(
                         height: 5,
                       ),
